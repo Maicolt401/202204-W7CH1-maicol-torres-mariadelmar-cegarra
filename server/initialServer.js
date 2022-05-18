@@ -10,9 +10,8 @@ const initialServer = (port) =>
       resolve();
     });
 
-    server.on("Error", (error) => {
+    server.on("error", (error) => {
       debug(chalk.red("Error on server"));
-
       if (error.code === "EADDRINUSE") {
         debug(`${port} used `);
       }
