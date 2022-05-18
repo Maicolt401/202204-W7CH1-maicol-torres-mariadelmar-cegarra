@@ -1,15 +1,17 @@
-const mongoose = require("mongoose");
+const debug = require("debug")("series:db:index");
+const chalk = require("chalk");
+const { default: mongoose } = require("mongoose");
 
-const connectDB = async (urlDB) =>
+const connectDB = (conectString) =>
   new Promise((resolve, reject) => {
-    mongoose.connect(urlDB, (error) => {
+    mongoose.set("debug", true);
+    mongoose.connect(conectString, (error) => {
       if (error) {
-        debug(chalk.red(`An error has occured: ${error.msg}`));
+        debug(chalk.red("error in data base", error.message));
         reject();
         return;
       }
-
-      debug(chalk.green("Connected to database"));
+      debug(chalk.yellow("connect to data base"));
       resolve();
     });
   });
