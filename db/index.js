@@ -2,7 +2,7 @@ const debug = require("debug")("series:db:index");
 const chalk = require("chalk");
 const { default: mongoose } = require("mongoose");
 
-const connectDb = (conectString) =>
+const connectDB = (conectString) =>
   new Promise((resolve, reject) => {
     mongoose.set("debug", true);
     mongoose.connect(conectString, (error) => {
@@ -16,4 +16,4 @@ const connectDb = (conectString) =>
     });
   });
 
-module.exports = connectDb;
+module.exports = connectDB;
