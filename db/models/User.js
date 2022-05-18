@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model, SchemaType } = require("mongoose");
 
 const UserSchema = new Schema({
   username: {
@@ -9,9 +9,23 @@ const UserSchema = new Schema({
     type: Date,
     required: true,
   },
+  admin: {
+    type: Boolean,
+    required: true,
+  },
   password: {
     type: String,
     required: true,
+  },
+  series: {
+    watched: {
+      type: [SchemaType.ObjectId],
+      ref: "series",
+    },
+    pending: {
+      type: [SchemaType.ObjectId],
+      ref: "series",
+    },
   },
 });
 
