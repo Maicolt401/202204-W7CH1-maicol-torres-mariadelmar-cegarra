@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, SchemaType } = require("mongoose");
 
 const SerieSchema = new Schema({
   name: {
@@ -10,6 +10,10 @@ const SerieSchema = new Schema({
   },
   category: {
     type: String,
+  },
+  platform: {
+    type: SchemaType.ObjectId,
+    ref: "Platform",
   },
 });
 

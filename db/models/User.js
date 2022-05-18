@@ -20,11 +20,11 @@ const UserSchema = new Schema({
   series: {
     watched: {
       type: [SchemaType.ObjectId],
-      ref: "series",
+      ref: "Serie",
     },
     pending: {
       type: [SchemaType.ObjectId],
-      ref: "series",
+      ref: "Serie",
     },
   },
 });
