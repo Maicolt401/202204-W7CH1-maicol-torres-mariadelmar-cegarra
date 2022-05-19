@@ -5,6 +5,7 @@ const User = require("../../db/models/User");
 const loginUser = async (req, res, next) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
+
   if (!user) {
     const error = new Error();
     error.statusCode = 403;
@@ -25,7 +26,8 @@ const loginUser = async (req, res, next) => {
       username,
       id: user.id,
     };
-    const token = await jwt.sign(userData, process.env.JWT_SECRET);
+    const token = jwt.sign(userData, process.env.JWT_SECRET);
+
     res.status(200).json({ token });
   } catch (error) {
     error.customMessage = "Invalid user data";
@@ -35,4 +37,4 @@ const loginUser = async (req, res, next) => {
   }
 };
 
-export default { loginUser };
+module.exports = { loginUser };
