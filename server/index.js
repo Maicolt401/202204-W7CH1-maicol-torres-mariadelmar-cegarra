@@ -4,6 +4,7 @@ const platformsRouter = require("./router/platformsRouter");
 const userRouter = require("./router/registerUser");
 const notFoundError = require("./middlewares/error");
 const seriesRouter = require("./router/seriesRouter");
+const { generalError } = require("./middlewares/errors");
 
 const app = express();
 app.use(morgan("dev"));
@@ -14,5 +15,6 @@ app.use("/platforms", platformsRouter);
 app.use("/user/register", userRouter);
 
 app.use(notFoundError);
+app.use(generalError);
 
 module.exports = app;
