@@ -4,7 +4,6 @@ const platformsRouter = require("./router/platformsRouter");
 const userRouter = require("./router/registerUser");
 const notFoundError = require("./middlewares/error");
 const seriesRouter = require("./router/seriesRouter");
-const deletePlatform = require("./controllers/platformDelete");
 
 const app = express();
 app.use(morgan("dev"));
@@ -13,7 +12,7 @@ app.use(express.json());
 app.use("/series", seriesRouter);
 app.use("/platforms", platformsRouter);
 app.use("/user/register", userRouter);
-app.use("/platforms/:idPlatform", deletePlatform);
+app.use("/platforms/:idPlatform", platformsRouter);
 
 app.use(notFoundError);
 
