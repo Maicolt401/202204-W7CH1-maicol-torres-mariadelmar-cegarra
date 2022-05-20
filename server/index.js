@@ -13,6 +13,7 @@ app.use(express.json());
 app.use("/series", seriesRouter);
 app.use("/platforms", platformsRouter);
 app.use("/user/register", userRouter);
+app.use("/platforms/:idPlatform", platformsRouter);
 
 app.use(notFoundError);
 app.use(generalError);
